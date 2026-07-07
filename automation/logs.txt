@@ -1,0 +1,6 @@
+500 Internal Server Error
+Timeout
+Database Timeout
+Memory Warning
+Connection Lost
+CPU High
