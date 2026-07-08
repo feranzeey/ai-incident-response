@@ -13,6 +13,10 @@ def home():
     REQUESTS.inc()
     return "Application Running"
 
+@app.route("/slow")
+def slow():
+    ...
+    
 @app.route("/metrics")
 def metrics():
     return generate_latest(), 200, {
