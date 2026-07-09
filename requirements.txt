@@ -1,0 +1,6 @@
+Flask
+fastapi
+uvicorn
+requests
+prometheus_client
+psutil

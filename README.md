@@ -1,264 +1,245 @@
 # AI Incident Response System
 
-A DevOps project that demonstrates automated incident detection, monitoring, system health checks, application recovery, and incident reporting using Docker, Flask, FastAPI, Prometheus, and Grafana.
+## Project Overview
+
+This project is an automated AI-powered incident response system that monitors an application, detects issues, analyzes incidents, performs recovery actions, verifies system health, and generates incident reports.
 
 ---
 
-## Overview
+# Architecture
 
-The AI Incident Response System is designed to automate key incident response tasks commonly performed by DevOps and Site Reliability Engineering (SRE) teams.
-
-The project monitors an application, collects metrics, performs health checks, automates recovery actions, and generates incident reports to reduce manual intervention and improve system reliability.
-
----
-
-## Features
-
-- Dockerized Flask application
-- FastAPI automation service
-- Prometheus metrics collection
-- Grafana monitoring and alerting
-- Application health checks
-- System resource monitoring
-- Log collection
-- Automated application restart
-- Incident report generation
-- Modular project structure
-
----
-
-## Technology Stack
-
-- Python 3.12
-- Flask
-- FastAPI
-- Docker
-- Docker Compose
-- Prometheus
-- Grafana
-- Requests
-- psutil
-
----
-
-## Project Structure
-
-```
-ai-incident-response/
-│
-├── app/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-│
-├── automation/
-│   ├── analyze.py
-│   ├── health.py
-│   ├── logs.txt
-│   ├── main.py
-│   ├── read_logs.py
-│   ├── restart.py
-│   └── system.py
-│
-├── monitoring/
-│   └── prometheus.yml
-│
-├── reports/
-│   └── report.md
-│
-├── screenshots/
-│
-├── docker-compose.yml
-├── README.md
-└── .gitignore
-```
-
----
-
-## System Workflow
-
-```
-Flask Application
+Application
         │
         ▼
-Prometheus
+Prometheus + Loki + Promtail
         │
         ▼
 Grafana
         │
         ▼
-Automation Service
+Alertmanager
         │
         ▼
-Collect Logs
+FastAPI
         │
         ▼
-Check System Health
+AI Investigation
         │
         ▼
-Restart Application
+Automatic Recovery
         │
         ▼
 Health Verification
         │
         ▼
-Generate Incident Report
+Incident Report
+
+---
+
+# Features
+
+- Flask Application
+- Prometheus Monitoring
+- Grafana Dashboards
+- Loki Log Collection
+- Promtail Log Shipping
+- Alertmanager Alerts
+- FastAPI Analysis Endpoint
+- Automatic Incident Investigation
+- Automatic Recovery
+- Incident Report Generation
+
+---
+
+# Folder Structure
+
+```
+ai-incident-response
+│
+├── app
+├── automation
+├── docs
+│   └── incidents
+├── monitoring
+├── screenshots
+├── README.md
+└── docker-compose.yml
 ```
 
 ---
 
-## Getting Started
+# Installation
 
-### Clone the repository
+## Clone the repository
 
 ```bash
-git clone https://github.com/feranzeey/ai-incident-response.git
+git clone YOUR_REPOSITORY_URL
 ```
+
+---
+
+## Go into the project
 
 ```bash
 cd ai-incident-response
 ```
 
-### Start the application
+---
+
+## Start Docker
 
 ```bash
 docker compose up -d
 ```
 
-### Verify running containers
+---
+
+## Run the Flask application
 
 ```bash
-docker ps
+python app.py
 ```
 
 ---
 
-## Application URLs
+## Run FastAPI
 
-| Service | URL |
-|---------|-----|
-| Flask Application | http://localhost:5000 |
-| Metrics Endpoint | http://localhost:5000/metrics |
-| Prometheus | http://localhost:9090 |
-| Grafana | http://localhost:3000 |
-| Automation Service | http://localhost:8000 |
+```bash
+uvicorn automation.api:app --reload
+```
 
 ---
 
-## Monitoring
+# Screenshots
 
-Prometheus collects application metrics from the Flask application.
+## Flask Application
 
-Grafana provides dashboards and alerting for monitoring application health and system performance.
-
-The monitoring setup includes:
-
-- Application availability
-- Request metrics
-- CPU monitoring
-- Memory monitoring
-- Health status
+(Add screenshot here)
 
 ---
 
-## Automation
+## Prometheus
 
-The automation service performs the following tasks:
-
-- Reads application logs
-- Collects system information
-- Performs health checks
-- Restarts the application when required
-- Generates incident reports
+(Add screenshot here)
 
 ---
 
-## Incident Response Process
+## Grafana
 
-1. Monitor application metrics.
-2. Detect abnormal system behavior.
-3. Collect logs and system information.
-4. Perform health checks.
-5. Restart the application if required.
-6. Verify recovery.
-7. Generate an incident report.
+(Add screenshot here)
 
 ---
 
-## Sample Incident Report
+## Loki
 
-The generated report contains:
-
-- Incident time
-- Problem summary
-- Evidence collected
-- Root cause
-- Resolution steps
-- Health check results
-- Recovery status
-- Recommended next steps
+(Add screenshot here)
 
 ---
 
-## Screenshots
+## Alertmanager
 
-The project includes screenshots demonstrating:
-
-- Flask application
-- Prometheus metrics
-- Automation service
-- Prometheus targets
-- Grafana alert configuration
-- Incident report
-- System architecture
+(Add screenshot here)
 
 ---
 
-## Future Improvements
+# Example Incident Workflow
 
-Planned enhancements include:
+High CPU
 
-- Alertmanager integration
-- Email notifications
-- Slack notifications
-- Microsoft Teams notifications
-- Automatic rollback
-- Kubernetes deployment
-- Centralized log management
-- Predictive anomaly detection
-- Cloud deployment on AWS
+↓
+
+Prometheus detects issue
+
+↓
+
+Grafana displays alert
+
+↓
+
+Alertmanager sends notification
+
+↓
+
+FastAPI starts analysis
+
+↓
+
+Metrics collected
+
+↓
+
+Logs collected
+
+↓
+
+AI determines root cause
+
+↓
+
+Automatic fix applied
+
+↓
+
+System verified
+
+↓
+
+Incident report generated
 
 ---
 
-## Skills Demonstrated
+# Future Improvements
 
-This project demonstrates practical experience with:
-
-- DevOps
-- Docker
-- Docker Compose
-- Monitoring
-- Observability
-- Incident Response
-- FastAPI
-- Flask
-- Prometheus
-- Grafana
-- Python Automation
-- System Health Monitoring
+- OpenAI Integration
+- Machine Learning Analysis
+- Kubernetes Recovery
+- Slack Notifications
+- Email Alerts
+- Predictive Monitoring
 
 ---
 
-## Author
+# Final Architecture
 
-**Feranmi Dada**
-
-GitHub: https://github.com/feranzeey
-
-LinkedIn: https://www.linkedin.com/in/feranmi-dada/
+```
+                Flask Application
+                       │
+                       ▼
+          Prometheus + Loki + Promtail
+                       │
+                       ▼
+                 Grafana Monitoring
+                       │
+              (Alert Triggered)
+                       │
+                       ▼
+                 Alertmanager
+                       │
+        POST http://localhost:8000/analyze
+                       │
+                       ▼
+              FastAPI Analysis API
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+  Read Metrics              Read Logs
+ (Prometheus)                 (Loki)
+          └────────────┬────────────┘
+                       ▼
+                 AI Investigation
+                       ▼
+               Choose Best Fix
+        (Restart / Rollback / Scale)
+                       ▼
+                Verify the System
+                       ▼
+            Generate Incident Report
+                       ▼
+               Incident Resolved
+```
 
 ---
 
-## License
+# Author
 
-This project is intended for learning, demonstration, and portfolio purposes.
+Oluwaferanmi Dada

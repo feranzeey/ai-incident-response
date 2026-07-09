@@ -1,0 +1,5 @@
+route:
+  receiver: webhook
+
+receivers:
+  - name: webhook
